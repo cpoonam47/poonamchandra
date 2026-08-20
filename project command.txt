@@ -1,0 +1,58 @@
+Create project 		django-admin startproject myportfolio_py
+
+runserver 		python manage.py runserver
+
+open google chrome than paste http://127.0.0.1:8000/
+create app		python manage.py startapp myprofile
+
+write your first view   
+myprofile/view.py
+
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")		
+
+myprofile/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+]
+
+myportfolio_py/urls.py
+
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls),
+]
+
+myportfolio_py / settings.py
+
+INSTALLED_APPS = [
+    'myprofile.apps.MyprofileConfig',
+
+myprofile/apps.py
+
+from django.apps import AppConfig
+class MyprofileConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'myprofile'
+
+make migrate	python manage.py migrate
+python manage.py makemigrations myprofile
+
+create superuser admin
+user cpoonam47
+cpoonam47@gmail.com
+pass 123456
+python manage.py createsuperuser
+
+
+pip install Pillow  # for image upload library
