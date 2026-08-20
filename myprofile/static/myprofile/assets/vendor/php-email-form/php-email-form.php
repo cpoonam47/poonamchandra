@@ -1,3 +1,4 @@
+<!--
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body = "Name: $name\n";
     $body .= "Email: $email\n\n";
     $body .= "Message:\n$message";
-
+-->
     if (mail($to, $subject, $body, $headers)) {
         echo "Message sent successfully!";
     } else {
