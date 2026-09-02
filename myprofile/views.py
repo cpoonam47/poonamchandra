@@ -4,7 +4,6 @@ from .models import Contact,GalleryImage
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Visitor
-from myprofile.models import Visitor
 
 
 def index(request):
