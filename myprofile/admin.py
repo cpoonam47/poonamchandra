@@ -126,6 +126,10 @@ class GalleryImageAdmin(admin.ModelAdmin):
 
 
 
+from django.contrib import admin
+from .models import Visitor
+
+
 @admin.register(Visitor)
 class VisitorAdmin(admin.ModelAdmin):
 
