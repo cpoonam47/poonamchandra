@@ -87,6 +87,8 @@ class GalleryImage(models.Model):
 
 
 
+''' visitor '''
+
 class Visitor(models.Model):
     ip_address = models.GenericIPAddressField()
     visit_date = models.DateField(auto_now_add=True)
