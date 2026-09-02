@@ -125,7 +125,7 @@ def home(request):
         "today_visitors": today_visitors,
     }
 
-    return render(request, "index.html", context)
+    return render(request, "myprofile/index.html", context)
 
 
 def index(request):
@@ -135,4 +135,5 @@ def index(request):
         'total_visitors': total_visitors,
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'myprofile/index.html', context)
+	
