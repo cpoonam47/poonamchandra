@@ -85,7 +85,7 @@ def gallery(request):
 
 
 # visitors
-'''
+
 
 def get_client_ip(request):
     """
@@ -129,19 +129,27 @@ def home(request):
     }
 
     return render(request, "myprofile/index.html", context)
-'''
+
 
 from django.shortcuts import render
+from django.utils import timezone
 from .models import Visitor
 
 
 def home(request):
-    # Record visitor
+
+    # Create a visitor entry automatically
     Visitor.objects.create()
 
-    # Total visitors
+    today = timezone.localdate()
+
     total_visitors = Visitor.objects.count()
 
-    return render(request, "index.html", {
+    today_visitors = Visitor.objects.filter(
+        visited_at__date=today
+    ).count()
+
+    return render(request, "myprofile/index.html", {
         "total_visitors": total_visitors,
+        "today_visitors": today_visitors,
     })
