@@ -127,3 +127,12 @@ def home(request):
 
     return render(request, "index.html", context)
 
+
+def index(request):
+    total_visitors = Visitor.objects.count()
+
+    context = {
+        'total_visitors': total_visitors,
+    }
+
+    return render(request, 'index.html', context)
