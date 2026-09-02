@@ -822,11 +822,32 @@ Through educational activities, tours, and technology-driven initiatives, I conn
         </div>
 
     
-      <div class="visitor-counter">
-    👁️ Visitors: {{ visitor_count }}
-      </div>
+  <div class="visitor-counter">
 
-      </section><!-- End Contact Section -->
+    <div class="visitor-box">
+        <div class="visitor-icon">👁️</div>
+        <div class="visitor-number">
+            {{ total_visitors }}
+        </div>
+        <div class="visitor-label">
+            Total Visitors
+        </div>
+    </div>
+
+    <div class="visitor-box">
+        <div class="visitor-icon">📅</div>
+        <div class="visitor-number">
+            {{ today_visitors }}
+        </div>
+        <div class="visitor-label">
+            Today's Visitors
+        </div>
+    </div>
+
+</div>
+
+          
+          </section><!-- End Contact Section -->
  <!-- ======= Footer ======= -->
     <footer id="footer">
       <div class="container">
