@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Contact,GalleryImage
 from django.http import HttpResponse
-
+from django.shortcuts import render
+from .models import Visitor
 
 def index(request):
     return render(request, "myprofile/index.html")
@@ -78,3 +79,49 @@ def gallery(request):
         'myprofile/gallery.html',
         context
     )
+
+
+
+
+def get_client_ip(request):
+    """
+    Get visitor IP address.
+    """
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(",")[0].strip()
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+
+    return ip
+
+
+def home(request):
+
+    # Get visitor IP
+    ip_address = get_client_ip(request)
+
+    # Record this visit
+    Visitor.objects.create(
+        ip_address=ip_address
+    )
+
+    # Total visitors
+    total_visitors = Visitor.objects.count()
+
+    # Today's visitors
+    from django.utils import timezone
+
+    today = timezone.localdate()
+
+    today_visitors = Visitor.objects.filter(
+        visit_date=today
+    ).count()
+
+    context = {
+        "total_visitors": total_visitors,
+        "today_visitors": today_visitors,
+    }
+
+    return render(request, "index.html", context)
