@@ -84,6 +84,8 @@ def gallery(request):
 
 
 
+/* visitrs  */
+
 
 def get_client_ip(request):
     """
@@ -108,12 +110,13 @@ def home(request):
     Visitor.objects.create(
         ip_address=ip_address
     )
-	from django.utils import timezone
+
     # Total visitors
     total_visitors = Visitor.objects.count()
 
     # Today's visitors
-    
+    from django.utils import timezone
+
     today = timezone.localdate()
 
     today_visitors = Visitor.objects.filter(
@@ -126,16 +129,3 @@ def home(request):
     }
 
     return render(request, "myprofile/index.html", context)
-
-
-def index(request):
-    total_visitors = Visitor.objects.count()
-	today = timezone.localdate()
-	today_visitors = Visitor.objects.filter(visit_date=today).count()
-    context = {
-        'total_visitors': total_visitors,
-		"today_visitors": today_visitors,
-    }
-
-    return render(request, 'myprofile/index.html', context)
-	
