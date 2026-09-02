@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Contact, GalleryImage
-
+from .models import Visitor
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -120,4 +120,29 @@ class GalleryImageAdmin(admin.ModelAdmin):
                 'classes': ('collapse',),
             }
         ),
+    )
+
+
+
+
+
+@admin.register(Visitor)
+class VisitorAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "ip_address",
+        "visit_date",
+        "visit_time",
+    )
+
+    list_filter = (
+        "visit_date",
+    )
+
+    search_fields = (
+        "ip_address",
+    )
+
+    ordering = (
+        "-visit_time",
     )
