@@ -85,7 +85,7 @@ def gallery(request):
 
 
 # visitors
-
+'''
 
 def get_client_ip(request):
     """
@@ -129,3 +129,19 @@ def home(request):
     }
 
     return render(request, "myprofile/index.html", context)
+'''
+
+from django.shortcuts import render
+from .models import Visitor
+
+
+def home(request):
+    # Record visitor
+    Visitor.objects.create()
+
+    # Total visitors
+    total_visitors = Visitor.objects.count()
+
+    return render(request, "index.html", {
+        "total_visitors": total_visitors,
+    })
