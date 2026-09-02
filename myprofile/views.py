@@ -84,7 +84,7 @@ def gallery(request):
 
 
 
-/* visitrs  */
+# visitors
 
 
 def get_client_ip(request):
