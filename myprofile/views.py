@@ -4,7 +4,7 @@ from .models import Contact,GalleryImage
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Visitor
-from django.utils import timezone
+
 
 
 def index(request):
@@ -108,7 +108,7 @@ def home(request):
     Visitor.objects.create(
         ip_address=ip_address
     )
-
+	from django.utils import timezone
     # Total visitors
     total_visitors = Visitor.objects.count()
 
