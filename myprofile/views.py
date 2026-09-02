@@ -4,6 +4,7 @@ from .models import Contact,GalleryImage
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Visitor
+from django.utils import timezone
 
 
 def index(request):
@@ -112,8 +113,7 @@ def home(request):
     total_visitors = Visitor.objects.count()
 
     # Today's visitors
-    from django.utils import timezone
-
+    
     today = timezone.localdate()
 
     today_visitors = Visitor.objects.filter(
@@ -130,9 +130,11 @@ def home(request):
 
 def index(request):
     total_visitors = Visitor.objects.count()
-
+	today = timezone.localdate()
+	today_visitors = Visitor.objects.filter(visit_date=today).count()
     context = {
         'total_visitors': total_visitors,
+		"today_visitors": today_visitors,
     }
 
     return render(request, 'myprofile/index.html', context)
