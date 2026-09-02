@@ -1,6 +1,5 @@
 from django.db import models
-from myprofile.models import Visitor
-Visitor.objects.count()
+
 
 class Contact(models.Model):
 
