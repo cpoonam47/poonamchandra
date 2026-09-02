@@ -87,21 +87,6 @@ class GalleryImage(models.Model):
 
 
 
-''' visitor '''
-'''
-class Visitor(models.Model):
-    ip_address = models.GenericIPAddressField()
-    visit_date = models.DateField(auto_now_add=True)
-    visit_time = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.ip_address} - {self.visit_date}"
-
-    class Meta:
-        ordering = ["-visit_time"]
-'''
-
-
 
 class Visitor(models.Model):
     visited_at = models.DateTimeField(auto_now_add=True)
